@@ -1,0 +1,55 @@
+{
+   "filepath": "settings.json",
+   "modifier": 25,
+   "days": [
+      "MON",
+      "TUE",
+      "WED",
+      "SUN",
+      "SAT"
+   ],
+   "taskname": "quotinator",
+   "taskrun": "./quotation.py",
+   "done_manifesto": [
+      {
+         "title": "Not Done, Done, and Not Done Yet.",
+         "message": "These are the only states of being. Focus on completing tasks and moving forward rather than obsessing over perfection."
+      },
+      {
+         "title": "There is no editing phase.",
+         "message": "Avoid getting stuck in endless revisions; complete your work and learn from it."
+      },
+      {
+         "title": "Fake it till you make it",
+         "message": "Pretending you know what you're doing is almost the same as knowing what you are doing, so just accept that you know what you're doing even if you don't and do it. \nConfidence and action often lead to better results than hesitation and self-doubt."
+      },
+      {
+         "title": "Banish procrastination.",
+         "message": "Start working on your projects now, even if it's not perfect, to overcome procrastination."
+      },
+      {
+         "title": "To be done is not to finish but to get other things done.",
+         "message": "Completion of one task should lead to progress on the next, fostering continuous productivity."
+      },
+      {
+         "title": "Once you're done, you can throw it away.",
+         "message": "Not all work needs to be saved or cherished; some is only meant to serve its immediate purpose."
+      },
+      {
+         "title": "Laugh at perfection. It's boring and keeps you from being done.",
+         "message": "Perfectionism can be paralyzing; embrace imperfections and the creative process."
+      },
+      {
+         "title": "Clean hands are wrong. Doing something makes you right.",
+         "message": "Taking action and getting your hands dirty in the process is more valuable than theory or speculation."
+      },
+      {
+         "title": "Failure counts as done.",
+         "message": "Failure is part of the learning process; don't be afraid to fail as it signifies progress."
+      },
+      {
+         "title": "Destruction is a variant of done.",
+         "message": "Sometimes, the best way to move forward is to tear down the old and make way for the new."
+      }
+   ]
+}

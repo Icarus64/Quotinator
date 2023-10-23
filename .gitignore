@@ -1,0 +1,26 @@
+Copy code
+# Ignore Python bytecode files
+__pycache__/
+
+# Ignore IDE-specific files and directories
+.vscode/
+.idea/
+
+# Ignore any log or temporary files
+*.log
+*.log.*
+*.tmp
+*.swp
+
+# Ignore built Python distributions
+dist/
+build/
+*.egg-info/
+
+# Ignore your virtual environment (if you're using one)
+venv/
+env/
+*.pyc
+
+# Ignore any local environment-specific files
+.env
