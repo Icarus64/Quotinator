@@ -1,5 +1,5 @@
 import click, json, subprocess, os
-from dailyquote import quoteNext, statCheck, validate_json_format, mod_corrector
+from dailyquote import quoteNext, statCheck, validate_json_format, mod_corrector, quoteStop
 
 
 PWD = os.path.dirname(__file__) + "\\"
@@ -87,6 +87,13 @@ def start():
     click.echo(quoteNext())
 
 
+@click.command(help="Stop the running Quotinator")
+def stop():
+    if click.confirm("Are you sure about stopping the Quotinator?"):
+        click.echo(quoteStop())
+    else:
+        click.echo("Command aborted!")
+
 @click.command(help="shows the current parameters for the app")
 def status():
     statCheck()
@@ -95,6 +102,7 @@ quotinator.add_command(setup)
 quotinator.add_command(set)
 quotinator.add_command(reset)
 quotinator.add_command(start)
+quotinator.add_command(stop)
 quotinator.add_command(status)
 
 if __name__ == "__main__":

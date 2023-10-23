@@ -1,15 +1,6 @@
 {
    "filepath": "settings.json",
-   "modifier": 25,
-   "days": [
-      "MON",
-      "TUE",
-      "WED",
-      "SUN",
-      "SAT"
-   ],
-   "taskname": "quotinator",
-   "taskrun": "./quotation.py",
+   "modifier": 5,
    "done_manifesto": [
       {
          "title": "Not Done, Done, and Not Done Yet.",

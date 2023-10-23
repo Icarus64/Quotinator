@@ -5,7 +5,13 @@ PWD = os.path.dirname(__file__) + "\\"
 
 def quoteNext():
     process = subprocess.run("schtasks /QUERY /TN quotinator", shell=True, text=True, capture_output=True)
+    if 'ERROR' in process.stderr:
+        return "Quotinator is not scheduled to run at the moment."
     return process.stdout
+
+def quoteStop():
+    process = subprocess.run("schtasks /DELETE /TN quotinator /F", shell=True, text=True, capture_output=True)
+    return process.stdout + "\n" + process.stderr
 
 def statCheck():
     with open("settings.json", "r") as f:
