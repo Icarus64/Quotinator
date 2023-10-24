@@ -65,6 +65,14 @@ If you want to reset all parameters to their default values, run:
 python quotinator.py reset
 ```
 
+## Stop the scheduled task
+
+if you want to stop the scheduled task, run:
+
+```
+python quotinator.py stop
+```
+
 ## JSON File Format
 
 The JSON file containing your quotes should have the following format:

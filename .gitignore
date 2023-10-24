@@ -24,3 +24,6 @@ env/
 
 # Ignore any local environment-specific files
 .env
+
+# Ignore the indexing json file
+/index.json

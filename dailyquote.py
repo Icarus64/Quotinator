@@ -13,6 +13,11 @@ def quoteStop():
     process = subprocess.run("schtasks /DELETE /TN quotinator /F", shell=True, text=True, capture_output=True)
     return process.stdout + "\n" + process.stderr
 
+def createIndex():
+    with open("index.json", "w") as file:
+        json.dump({"index": 0}, file)
+    return 1
+
 def statCheck():
     with open("settings.json", "r") as f:
         data = json.load(f)

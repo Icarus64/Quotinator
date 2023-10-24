@@ -1,5 +1,5 @@
 import click, json, subprocess, os
-from dailyquote import quoteNext, statCheck, validate_json_format, mod_corrector, quoteStop
+from dailyquote import quoteNext, statCheck, validate_json_format, mod_corrector, quoteStop, createIndex
 
 
 PWD = os.path.dirname(__file__) + "\\"
@@ -25,7 +25,7 @@ def setup(filepath, modifier, status):
     data["modifier"] = mod_corrector(modifier)
     with open('settings.json', 'w') as f:
         json.dump(data, f, indent=3)
-
+    createIndex()
     if status:
         statCheck()
     
@@ -44,6 +44,7 @@ def set(status, filepath = "settings.json", modifier = None):
 
     if filepath is not None:
         data["filepath"] = filepath
+        createIndex()
     if modifier is not None:
         data["modifier"] = mod_corrector(int(modifier))
     with open("settings.json", "w") as f:
@@ -61,6 +62,7 @@ def reset():
         data["modifier"] = 30
     with open("settings.json", "w") as f:
         json.dump(data, f, indent=3)
+    createIndex()
     statCheck()
 
 @click.command(help = "Schedules the task created")

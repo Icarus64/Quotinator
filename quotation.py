@@ -1,4 +1,5 @@
 from plyer import notification
+from dailyquote import createIndex
 import json, sys, os, pyautogui
 
 
@@ -14,10 +15,17 @@ def show_notification(title, message, index):
 
 def quotation(payload):
     index = getIndex()
-    if index+1 >= len(payload):
+    if index >= len(payload):
        update = 0
     else:
        update = index + 1
+    
+    try:
+        payload[index]
+    except:
+        index = 0
+        update = index + 1
+
     return show_notification(
         title=payload[index]["title"], message=payload[index]["message"], index=update
     )
