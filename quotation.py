@@ -1,6 +1,6 @@
 from plyer import notification
 from dailyquote import createIndex
-import json, sys, os, pyautogui
+import json, sys, os, pyautogui, requests
 
 
 pyautogui.hotkey("win", "down")
@@ -8,13 +8,37 @@ PWD = os.path.dirname(__file__) + "\\"
 
 def show_notification(title, message, index):
     updateIndex(index)
-    return notification.notify(
+    notification.notify(
         title=title, message=message, app_name="DoneQuote", timeout=15, ticker="DONE"
     )
 
+    return True
 
-def quotation(payload):
+def remoteQuotation():
+    url = 'https://zenquotes.io/api/random'
+    try:
+        response = requests.get(url)
+        if response.status_code == requests.codes.ok:
+            quote = json.loads(response.text)
+            notification.notify(
+                title = quote[0]["a"], message=quote[0]["q"], app_name="DoneQuote", timeout=15, ticker="DONE"
+            )
+            return True
+        else:
+            print("Some error occured, switching to local quote")
+            return False
+    except Exception as e:
+        print(e)
+        return False
+
+
+def quotation(payload, remote):
     index = getIndex()
+    if remote:
+        result = remoteQuotation()
+        if result:
+            return result
+    
     if index >= len(payload):
        update = 0
     else:
@@ -45,13 +69,12 @@ def updateIndex(index):
           json.dump({"index": index}, file)
 
 if __name__ == "__main__":
-    try:
-        if 'settings.json' in sys.argv[1]:
-            with open(sys.argv[1], 'r') as f:
-                data=json.load(f)['done_manifesto']
-        else:
-            with open(sys.argv[1], 'r') as f:
-                data = json.load(f)
-        quotation(data)
-    except Exception as e:
-        print(e)
+    with open(sys.argv[1], 'r') as f:
+        content = json.load(f)
+    remote = content["remote"]
+    if 'settings.json' in sys.argv[1]:
+        data=content['done_manifesto']
+    else:
+        data = content
+    quotation(data, remote)
+    

@@ -1,5 +1,6 @@
 {
    "filepath": "settings.json",
+   "remote": false,
    "modifier": 30,
    "done_manifesto": [
       {

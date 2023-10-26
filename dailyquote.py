@@ -26,6 +26,7 @@ def statCheck():
         click.echo("-------------------------------")
         click.echo(f"Filepath: \t{data['filepath']}")
         click.echo(f"Modifier: \t{data['modifier']}")
+        click.echo(f"Remote status: \t{data['remote']}")
         click.echo("-------------------------------")
         click.echo(quoteNext())
 

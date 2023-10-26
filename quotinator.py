@@ -4,6 +4,7 @@ from dailyquote import quoteNext, statCheck, validate_json_format, mod_corrector
 
 PWD = os.path.dirname(__file__) + "\\"
 
+
 @click.group()
 def quotinator():
     pass
@@ -35,9 +36,11 @@ def setup(filepath, modifier, status):
               help="Enter the quote json file to be imported")
 @click.option('-mo', '--modifier',
               help="Takes input as multiples of 5 minutes for interval between the notifications")
+@click.option('-rem/-nor', '--remote/--no-remote', type = click.BOOL,
+              help="Change the settings from local quotes to random external quotes (requires internet connection)")
 @click.option("-s/-ns", "--status/--nostatus", type=click.BOOL, default=False,
               help="Displays the current configuration setup")
-def set(status, filepath = "settings.json", modifier = None):
+def set(remote, status, filepath = "settings.json", modifier = None):
 
     with open("settings.json", "r") as f:
         data = json.load(f)
@@ -47,8 +50,13 @@ def set(status, filepath = "settings.json", modifier = None):
         createIndex()
     if modifier is not None:
         data["modifier"] = mod_corrector(int(modifier))
+    if remote is not None:
+        data["remote"] = remote
+
     with open("settings.json", "w") as f:
         json.dump(data, f, indent=3)
+
+    
     
     if status:
         statCheck()
@@ -60,6 +68,7 @@ def reset():
         data = json.load(f)
         data["filepath"] = "settings.json"
         data["modifier"] = 30
+        data["remote"] = False
     with open("settings.json", "w") as f:
         json.dump(data, f, indent=3)
     createIndex()

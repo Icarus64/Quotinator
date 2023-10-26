@@ -9,7 +9,9 @@ Quotinator is a simple Python application for daily quote notifications. It allo
 - Easily view and update your current configuration.
 - Reset all parameters to default values.
 - Start the daily quote notification task.
+- Stop the running task
 - Check the current status and parameters of the app.
+- Switch to third party API ( Zen Quotes API ) for random quotes
 
 ## Getting Started
 
@@ -38,6 +40,33 @@ python quotinator.py set
 ```
 
 You can choose to update the JSON file path or the notification interval.
+
+### Switch to random online quotes
+
+To use online 3rd party API sourced quotes, use the following command:
+
+```
+python quotinator.py set --remote
+```
+
+OR 
+
+```
+python quotinator.py set -rem
+```
+
+and to switch back to local default quotes or your custom quotes, use the following command:
+
+```
+python quotinator.py set --no-remote
+```
+
+OR 
+
+```
+python quotinator.py set -nor
+```
+
 
 ### Start Daily Quote Notifications
 

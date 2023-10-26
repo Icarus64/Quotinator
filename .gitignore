@@ -26,4 +26,4 @@ env/
 .env
 
 # Ignore the indexing json file
-/index.json
+index.json
