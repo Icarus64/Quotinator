@@ -69,12 +69,13 @@ def updateIndex(index):
           json.dump({"index": index}, file)
 
 if __name__ == "__main__":
-    with open(sys.argv[1], 'r') as f:
+    with open(PWD + "settings.json", 'r') as f:
         content = json.load(f)
     remote = content["remote"]
     if 'settings.json' in sys.argv[1]:
         data=content['done_manifesto']
     else:
-        data = content
+        with open(sys.argv[1], 'r') as f:
+            data = json.load(f)
     quotation(data, remote)
     
