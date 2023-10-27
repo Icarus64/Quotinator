@@ -68,7 +68,7 @@ def quoteDaily():
 
     filepath = PWD + data["filepath"]
 
-    task_today = f"schtasks /CREATE /TN quotinator /TR \"py {PWD}quotation.py {filepath}\" /SC MINUTE /MO {min} /ET 23:59 /F"
+    task_today = f"schtasks /CREATE /TN quotinator /TR \"python {PWD}quotation.py {filepath}\" /SC MINUTE /MO {min} /ET 23:59 /F"
 
     
     process = subprocess.run(task_today, shell=True, text=True, capture_output=True)

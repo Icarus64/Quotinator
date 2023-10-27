@@ -36,15 +36,14 @@ def setup(filepath, modifier, status):
               help="Enter the quote json file to be imported")
 @click.option('-mo', '--modifier',
               help="Takes input as multiples of 5 minutes for interval between the notifications")
-@click.option('-rem/-nor', '--remote/--no-remote', type = click.BOOL,
+@click.option('-rem/-nor', '--remote/--no-remote', type = click.BOOL, default=None,
               help="Change the settings from local quotes to random external quotes (requires internet connection)")
 @click.option("-s/-ns", "--status/--nostatus", type=click.BOOL, default=False,
               help="Displays the current configuration setup")
 def set(remote, status, filepath = "settings.json", modifier = None):
-
+ 
     with open("settings.json", "r") as f:
         data = json.load(f)
-
     if filepath is not None:
         data["filepath"] = filepath
         createIndex()
@@ -91,7 +90,7 @@ def start():
             click.echo("ERROR: Please rectify and try again")
             return False
     
-    task = f"py {PWD}dailyquote.py"
+    task = f"python {PWD}dailyquote.py"
 
     process = subprocess.run(task, shell=True, text=True, capture_output=True)
     click.echo(f"{process.stdout}\n{process.stderr}")
